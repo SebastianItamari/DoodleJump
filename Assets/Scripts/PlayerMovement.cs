@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 targetVel = new Vector2(move * speed, bodyPLalyer.velocity.y);
         bodyPLalyer.velocity = Vector2.SmoothDamp(bodyPLalyer.velocity, targetVel, ref refSpeed,0.1f);
-        //bodyPLalyer.velocity = targetVel;
 
         if(move > 0 && !right)
         {

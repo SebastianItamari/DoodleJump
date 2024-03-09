@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    public List<BackgroundGame> backgrounds;
+    public Transform transformPlatformManager;
+    public GameController gameController;
     private GameObject targetObject;
     private Transform targetTransform;
-    public List<Transform> backgroundTransform;
-    public Transform transformPlatformManager;
+    private GameObject bg;
+    private Transform bgTransform;
 
     void Start()
     {
+        bg = (GameObject)Instantiate(backgrounds[0].background, new Vector2(0,0), Quaternion.identity);
+        gameController.varY = backgrounds[0].varY;
+        gameController.speedPlatforms = backgrounds[0].horizontalSpeeds;
         targetObject = GameObject.FindWithTag("Player");
+
+        bgTransform = bg.GetComponent<Transform>();
 
         if (targetObject != null)
         {
@@ -35,8 +44,8 @@ public class CameraScript : MonoBehaviour
         {
             Vector3 newPosition = new Vector3(transform.position.x, targetTransform.position.y,transform.position.z);
             transform.position = newPosition;
-            Vector3 newBackgroundPosition = new Vector3(backgroundTransform[0].position.x, targetTransform.position.y, backgroundTransform[0].position.z);
-            backgroundTransform[0].position = newBackgroundPosition;
+            Vector3 newBackgroundPosition = new Vector3(bgTransform.position.x, targetTransform.position.y, bgTransform.position.z);
+            bgTransform.position = newBackgroundPosition;
         }
     }
 }

@@ -10,15 +10,16 @@ public class GameController : MonoBehaviour
     public List<GameObject> platforms;
     public TextMeshProUGUI scoreText;
     public GameObject scoreMenu;
+    public float varY;// = 2.5f;
+    public List<float> speedPlatforms;
     private GameObject plat;
     private float lastY = 6.14f;
-    private float varY = 2.5f;
     private float score = 0f;
     private float leftLimit = -7.11f;
     private float rightLimit = 7.11f;
     void Start()
     {
-      
+        //speedPlatforms = new List<float> { 0f, 2f, 1f };
     }
 
     // Update is called once per frame
@@ -35,22 +36,28 @@ public class GameController : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("Platform"))
         {
-            int aux = Random.Range(1, 10);
-            if (aux == 1)
+            int random = Random.Range(1, 10);
+            int index;
+            if (random == 1)
             {
                 //y + 7.5, y + 11
-                plat = (GameObject)Instantiate(platforms[2], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
+                index = 2;
             }
-            else if (aux > 1 && aux < 4)
+            else if (random > 1 && random < 4)
             {
-                plat = (GameObject)Instantiate(platforms[1], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
+                index = 1;
             }
             else
             {
-                plat = (GameObject)Instantiate(platforms[0], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
+                index = 0;
             }
-
+            plat = (GameObject)Instantiate(platforms[index], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
             lastY = plat.transform.position.y;
+            Platform platformController = plat.GetComponent<Platform>();
+            if (platformController != null)
+            {
+                platformController.horizontalSpeed = speedPlatforms[index];
+            }
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag.Equals("Player"))
