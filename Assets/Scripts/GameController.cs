@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
         }
         else if(collision.gameObject.tag.Equals("Player"))
         {
+            collision.gameObject.SetActive(false);
             Time.timeScale = 0f;
             scoreMenu.SetActive(true);
         }

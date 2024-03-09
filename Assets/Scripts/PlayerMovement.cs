@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D bodyPLalyer;
+    private BoxCollider2D colliderPlayer;
     private bool right = true;
     private float move = 0;
     private Animator animatorPlayer;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bodyPLalyer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
+        colliderPlayer = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         move = Input.GetAxis("Horizontal");
         if (bodyPLalyer.velocity.y < 0 && up == true)
         {
-            Debug.Log("Llegue");
+            colliderPlayer.offset = new Vector2(colliderPlayer.offset.x, 0.7475104f);
             animatorPlayer.SetBool("Up", false);
             up = false;
         }
@@ -66,10 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verificar si la colisión ocurrió con el objeto específico con el que deseas interactuar
         if (collision.gameObject.CompareTag("Platform"))
         {
-            //Debug.Log("Entre");
+            colliderPlayer.offset = new Vector2(colliderPlayer.offset.x, 1.68f);
             animatorPlayer.SetBool("Up",true);
             up = true;
         }

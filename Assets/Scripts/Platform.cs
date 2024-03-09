@@ -7,14 +7,17 @@ public class Platform : MonoBehaviour
     public float jump;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.relativeVelocity.y <= 0)
+        if (collision.gameObject.tag.Equals("Player"))
         {
-            Rigidbody2D rigidbody = collision.collider.GetComponent<Rigidbody2D>();
-            if (rigidbody != null)
+            if (collision.relativeVelocity.y <= 0)
             {
-                Vector2 velocity = rigidbody.velocity;
-                velocity.y = jump;
-                rigidbody.velocity = velocity;
+                Rigidbody2D rigidbody = collision.collider.GetComponent<Rigidbody2D>();
+                if (rigidbody != null)
+                {
+                    Vector2 velocity = rigidbody.velocity;
+                    velocity.y = jump;
+                    rigidbody.velocity = velocity;
+                }
             }
         }
     }
