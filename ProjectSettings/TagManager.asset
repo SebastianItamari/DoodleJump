@@ -45,6 +45,9 @@ TagManager:
   - name: BackgroundGroup
     uniqueID: 3484516419
     locked: 0
+  - name: PlatformGroup
+    uniqueID: 1456586409
+    locked: 0
   - name: PlayerGroup
     uniqueID: 583011955
     locked: 0

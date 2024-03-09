@@ -12,8 +12,10 @@ public class GameController : MonoBehaviour
     public GameObject scoreMenu;
     private GameObject plat;
     private float lastY = 6.14f;
-    private float varY = 3f;
+    private float varY = 2.5f;
     private float score = 0f;
+    private float leftLimit = -7.11f;
+    private float rightLimit = 7.11f;
     void Start()
     {
       
@@ -37,15 +39,15 @@ public class GameController : MonoBehaviour
             if (aux == 1)
             {
                 //y + 7.5, y + 11
-                plat = (GameObject)Instantiate(platforms[2], new Vector2(Random.Range(-7.11f, 7.11f), lastY + varY), Quaternion.identity);
+                plat = (GameObject)Instantiate(platforms[2], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
             }
             else if (aux > 1 && aux < 4)
             {
-                plat = (GameObject)Instantiate(platforms[1], new Vector2(Random.Range(-7.11f, 7.11f), lastY + varY), Quaternion.identity);
+                plat = (GameObject)Instantiate(platforms[1], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
             }
             else
             {
-                plat = (GameObject)Instantiate(platforms[0], new Vector2(Random.Range(-7.11f, 7.11f), lastY + varY), Quaternion.identity);
+                plat = (GameObject)Instantiate(platforms[0], new Vector2(Random.Range(leftLimit, rightLimit), lastY + varY), Quaternion.identity);
             }
 
             lastY = plat.transform.position.y;
