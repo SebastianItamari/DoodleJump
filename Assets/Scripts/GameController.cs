@@ -62,9 +62,23 @@ public class GameController : MonoBehaviour
         }
         else if(collision.gameObject.tag.Equals("Player"))
         {
-            collision.gameObject.SetActive(false);
-            Time.timeScale = 0f;
-            scoreMenu.SetActive(true);
+            plat = collision.gameObject;
+            Animator anim = plat.GetComponent<Animator>();
+            Rigidbody2D rb = plat.GetComponent<Rigidbody2D>();
+            PlayerMovement playerInputComponent = plat.GetComponent<PlayerMovement>();
+            playerInputComponent.enabled = false;
+            rb.velocity = new Vector2(0,0.5f);
+            rb.gravityScale = 0.1f;
+            anim.SetTrigger("Die");
+
+            Invoke("FinishLevel", 1f);
         }
+    }
+
+    private void FinishLevel()
+    {
+        Time.timeScale = 0f;
+        scoreMenu.SetActive(true);
+        plat.SetActive(false);
     }
 }

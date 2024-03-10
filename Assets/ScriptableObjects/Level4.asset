@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level4
   m_EditorClassIdentifier: 
   background: {fileID: 7163710242896879571, guid: 4c5c9086e35193d4ab0147fecdba8619, type: 3}
-  varY: 0
+  varY: 5
   horizontalSpeeds:
-  - 1.2
-  - 3.8
-  - 2.8
+  - 3
+  - 5
+  - 4
