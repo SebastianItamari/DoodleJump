@@ -7,10 +7,11 @@ using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
-    public List<GameObject> platforms;
-    public TextMeshProUGUI scoreText;
-    public GameObject scoreMenu;
-    public float varY;// = 2.5f;
+    [SerializeField] private List<GameObject> platforms;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject scoreMenu;
+    [SerializeField] private CanvasGroup scorePanel;
+    public float varY;
     public List<float> speedPlatforms;
     private GameObject plat;
     private float lastY = 6.14f;
@@ -77,8 +78,9 @@ public class GameController : MonoBehaviour
 
     private void FinishLevel()
     {
-        Time.timeScale = 0f;
         scoreMenu.SetActive(true);
+        LeanTween.alphaCanvas(scorePanel, 1f, 0.8f)
+                 .setEase(LeanTweenType.easeInQuad);
         plat.SetActive(false);
     }
 }

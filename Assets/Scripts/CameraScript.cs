@@ -8,12 +8,12 @@ public class CameraScript : MonoBehaviour
     public List<BackgroundGame> backgrounds;
     public Transform transformPlatformManager;
     public GameController gameController;
+    [SerializeField] StartPlayer startPlayer;
     private GameObject targetObject;
     private Transform targetTransform;
     private GameObject bg;
     private Transform bgTransform;
     private int index = 0;
-    private bool change = false;
 
     void Start()
     {
@@ -21,7 +21,8 @@ public class CameraScript : MonoBehaviour
         gameController.varY = backgrounds[index].varY;
         gameController.speedPlatforms = backgrounds[index].horizontalSpeeds;
         index++;
-        targetObject = GameObject.FindWithTag("Player");
+
+        targetObject = startPlayer.player;
 
         bgTransform = bg.GetComponent<Transform>();
 
@@ -50,10 +51,13 @@ public class CameraScript : MonoBehaviour
 
         if (targetTransform.position.y > transform.position.y)
         {
-            Vector3 newPosition = new Vector3(transform.position.x, targetTransform.position.y,transform.position.z);
-            transform.position = newPosition;
-            Vector3 newBackgroundPosition = new Vector3(bgTransform.position.x, targetTransform.position.y, bgTransform.position.z);
-            bgTransform.position = newBackgroundPosition;
+            Vector3 newPosition = new Vector3(transform.position.x, targetTransform.position.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
+            if(targetTransform.position.y > bgTransform.position.y)
+            {
+                Vector3 newBackgroundPosition = new Vector3(bgTransform.position.x, targetTransform.position.y, bgTransform.position.z);
+                bgTransform.position = Vector3.Lerp(bgTransform.position, newBackgroundPosition, 1f);
+            }           
         }
     }
 
@@ -61,7 +65,7 @@ public class CameraScript : MonoBehaviour
     {
         if (index < backgrounds.Count)
         {
-            bg = Instantiate(backgrounds[index].background, new Vector2(0, targetTransform.position.y + 10), Quaternion.identity);
+            bg = Instantiate(backgrounds[index].background, new Vector2(0, targetTransform.position.y + 9.8f), Quaternion.identity);
             gameController.varY = backgrounds[index].varY;
             gameController.speedPlatforms = backgrounds[index].horizontalSpeeds;
 

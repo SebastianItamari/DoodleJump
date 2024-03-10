@@ -11,10 +11,17 @@ public class SelectionMenu : MonoBehaviour
 
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI name;
+    [SerializeField] private Image rect1;
+    [SerializeField] private Image rect2;
+    [SerializeField] private GameObject shield;
+    private CanvasGroup sh;
     private GameManager gameManager;
 
     private void Start()
     {
+        LeanTween.moveLocalX(rect1.gameObject, -1672f, 0.4f)
+               .setEase(LeanTweenType.easeOutQuad);
+
         gameManager = GameManager.instance;
 
         index = PlayerPrefs.GetInt("JugadorIndex");
@@ -64,6 +71,26 @@ public class SelectionMenu : MonoBehaviour
 
     public void StartGame()
     {
+        StartCoroutine(playTransitionPlay());
+    }
+
+    IEnumerator playTransitionPlay()
+    {
+        sh = shield.GetComponent<CanvasGroup>();
+        LeanTween.moveLocalX(rect1.gameObject, -800f, 0.8f)
+                .setEase(LeanTweenType.easeInQuad).setOnComplete(changeShieldSize);
+        LeanTween.moveLocalX(rect2.gameObject, 800f, 0.8f)
+                .setEase(LeanTweenType.easeInQuad);
+        yield return new WaitForSeconds(1.6f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void changeShieldSize()
+    {
+        shield.SetActive(true);
+        LeanTween.alphaCanvas(sh, 0f, 0.8f)
+                 .setEase(LeanTweenType.easeOutQuad);
+        LeanTween.scale(shield, new Vector3(3f, 3f, 1f), 0.8f)
+                 .setEase(LeanTweenType.easeOutQuad);
     }
 }
