@@ -7,5 +7,5 @@ public class Player : ScriptableObject
 {
     public GameObject player;
     public Sprite image;
-    public string name;
+    public string pName;
 }

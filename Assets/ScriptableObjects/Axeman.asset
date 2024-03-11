@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3747463619783973068, guid: ffe31b554556eb0489d99591b53c0241, type: 3}
   image: {fileID: 21300000, guid: 55280580170b717428da4957f6671ffe, type: 3}
-  name: Axeman
+  pName: Axeman

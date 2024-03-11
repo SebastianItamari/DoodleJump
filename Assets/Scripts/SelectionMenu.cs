@@ -10,10 +10,11 @@ public class SelectionMenu : MonoBehaviour
     private int index;
 
     [SerializeField] private Image image;
-    [SerializeField] private TextMeshProUGUI name;
+    [SerializeField] private TextMeshProUGUI namePlayer;
     [SerializeField] private Image rect1;
     [SerializeField] private Image rect2;
     [SerializeField] private GameObject shield;
+    [SerializeField] private AudioClip sword;
     private CanvasGroup sh;
     private GameManager gameManager;
 
@@ -38,12 +39,13 @@ public class SelectionMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("JugadorIndex", index);
         image.sprite = gameManager.players[index].image;
-        name.text = gameManager.players[index].name;
+        namePlayer.text = gameManager.players[index].pName;
     }
 
     public void NextPlayer()
     {
-        if(index == gameManager.players.Count - 1)
+        AudioController.instance.SoundButton();
+        if (index == gameManager.players.Count - 1)
         {
             index = 0;
         }
@@ -57,6 +59,7 @@ public class SelectionMenu : MonoBehaviour
 
     public void PreviousPlayer()
     {
+        AudioController.instance.SoundButton();
         if (index == 0)
         {
             index = gameManager.players.Count - 1;
@@ -71,11 +74,14 @@ public class SelectionMenu : MonoBehaviour
 
     public void StartGame()
     {
+        BackgroundSound.instance.Stop();
+        AudioController.instance.SoundButton();
         StartCoroutine(playTransitionPlay());
     }
 
     IEnumerator playTransitionPlay()
     {
+        AudioController.instance.Reproduce(sword);
         sh = shield.GetComponent<CanvasGroup>();
         LeanTween.moveLocalX(rect1.gameObject, -800f, 0.8f)
                 .setEase(LeanTweenType.easeInQuad).setOnComplete(changeShieldSize);
@@ -90,7 +96,7 @@ public class SelectionMenu : MonoBehaviour
         shield.SetActive(true);
         LeanTween.alphaCanvas(sh, 0f, 0.8f)
                  .setEase(LeanTweenType.easeOutQuad);
-        LeanTween.scale(shield, new Vector3(3f, 3f, 1f), 0.8f)
+        LeanTween.scale(shield, new Vector3(2.5f, 2.5f, 1f), 0.8f)
                  .setEase(LeanTweenType.easeOutQuad);
     }
 }

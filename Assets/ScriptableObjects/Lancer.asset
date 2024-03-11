@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1648908475687321530, guid: 6d15861f93c780a49b14706cf9e70969, type: 3}
   image: {fileID: 21300000, guid: 84dc68e495b3eed409d0a859e7bdfb32, type: 3}
-  name: Lancer
+  pName: Lancer

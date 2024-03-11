@@ -4,6 +4,7 @@ public class Platform : MonoBehaviour
 {
     public float jump;
     public float horizontalSpeed;
+    [SerializeField] private AudioClip platformSound;
     private float leftLimit = -7.11f;
     private float rightLimit = 7.11f;
     private Rigidbody2D platform;
@@ -50,6 +51,7 @@ public class Platform : MonoBehaviour
                     Rigidbody2D playerRigidbody = collision.collider.GetComponent<Rigidbody2D>();
                     if (playerRigidbody != null)
                     {
+                        AudioController.instance.Reproduce(platformSound);
                         Vector2 velocity = playerRigidbody.velocity;
                         velocity.y = jump;
                         playerRigidbody.velocity = velocity;

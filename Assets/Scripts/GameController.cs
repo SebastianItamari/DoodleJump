@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject scoreMenu;
     [SerializeField] private CanvasGroup scorePanel;
+    [SerializeField] private AudioClip die;
     public float varY;
     public List<float> speedPlatforms;
     private GameObject plat;
@@ -63,6 +64,7 @@ public class GameController : MonoBehaviour
         }
         else if(collision.gameObject.tag.Equals("Player"))
         {
+            AudioController.instance.Reproduce(die);
             plat = collision.gameObject;
             Animator anim = plat.GetComponent<Animator>();
             Rigidbody2D rb = plat.GetComponent<Rigidbody2D>();

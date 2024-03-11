@@ -637,11 +637,12 @@ MonoBehaviour:
   scoreText: {fileID: 1394481830}
   scoreMenu: {fileID: 1044618091}
   scorePanel: {fileID: 1044618095}
-  varY: 2.5
+  die: {fileID: 8300000, guid: 8147aac8f901dbb4ba002f0526391b11, type: 3}
+  varY: 0
   speedPlatforms:
   - 0
-  - 2
-  - 1
+  - 0
+  - 0
 --- !u!61 &597521630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -744,54 +745,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e9916864aeafc4db6f0e5331be5bde, type: 3}
---- !u!1 &708346739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 708346741}
-  - component: {fileID: 708346740}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &708346740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708346739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d0eddcec373324998714e08cadc7b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 11400000, guid: 19aefceda147ad34bbacb958f291a9ae, type: 2}
-  - {fileID: 11400000, guid: 76b3ccca1d1174342b3e0a79c4b04889, type: 2}
-  - {fileID: 11400000, guid: 69b243209b8917845a41921b9f4a4c8d, type: 2}
---- !u!4 &708346741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708346739}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 791.87537, y: 418.16452, z: 116.566734}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758556206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +3892,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1589417054}
   - {fileID: 1108567150}
-  - {fileID: 708346741}
   - {fileID: 1376602503}
   - {fileID: 1619199620}
   - {fileID: 613555846}

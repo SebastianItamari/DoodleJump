@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public List<BackgroundGame> backgrounds;
+    public List<Level> backgrounds;
     public Transform transformPlatformManager;
     public GameController gameController;
     [SerializeField] StartPlayer startPlayer;
@@ -14,6 +14,7 @@ public class CameraScript : MonoBehaviour
     private GameObject bg;
     private Transform bgTransform;
     private int index = 0;
+    private int spaceBetweenLevels = 50;
 
     void Start()
     {
@@ -44,7 +45,7 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Mathf.RoundToInt(targetTransform.position.y) > 50 * index)
+        if (Mathf.RoundToInt(targetTransform.position.y) > spaceBetweenLevels * index)
         {
             CreateNewBackground();
         }

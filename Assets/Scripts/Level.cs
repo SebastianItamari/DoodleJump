@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewBackgroundGame", menuName = "BackgroundGame")]
-public class BackgroundGame : ScriptableObject
+[CreateAssetMenu(fileName = "NewLevel", menuName = "Level")]
+public class Level : ScriptableObject
 {
     public GameObject background;
     public float varY;

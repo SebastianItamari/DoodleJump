@@ -11,7 +11,7 @@ public class GameMenu : MonoBehaviour
 
     void Start()
     {
-        
+        BackgroundSound.instance.ReproduceGame();
     }
 
     void Update()
@@ -31,6 +31,7 @@ public class GameMenu : MonoBehaviour
 
     public void Pause()
     {
+        AudioController.instance.SoundButton();
         paused = true;
         Time.timeScale = 0f;
         pauseButton.SetActive(false);
@@ -39,6 +40,7 @@ public class GameMenu : MonoBehaviour
 
     public void Resume()
     {
+        AudioController.instance.SoundButton();
         Time.timeScale = 1f;
         pauseButton.SetActive(true);
         pauseMenu.SetActive(false);
@@ -47,6 +49,7 @@ public class GameMenu : MonoBehaviour
 
     public void Restart()
     {
+        AudioController.instance.SoundButton();
         Time.timeScale = 1f;
         paused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);    
@@ -54,6 +57,8 @@ public class GameMenu : MonoBehaviour
 
     public void Quit()
     {
+        BackgroundSound.instance.Stop();
+        AudioController.instance.SoundButton();
         Time.timeScale = 1f;
         paused = false;
         SceneManager.LoadScene(0);

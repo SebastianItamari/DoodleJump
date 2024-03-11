@@ -447,58 +447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 156580422}
-  name: {fileID: 997598530}
+  namePlayer: {fileID: 997598530}
   rect1: {fileID: 1544690155}
   rect2: {fileID: 1366158216}
   shield: {fileID: 1810624055}
---- !u!1 &257358046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 257358048}
-  - component: {fileID: 257358047}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &257358047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257358046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d0eddcec373324998714e08cadc7b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 11400000, guid: 19aefceda147ad34bbacb958f291a9ae, type: 2}
-  - {fileID: 11400000, guid: 76b3ccca1d1174342b3e0a79c4b04889, type: 2}
-  - {fileID: 11400000, guid: 69b243209b8917845a41921b9f4a4c8d, type: 2}
---- !u!4 &257358048
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257358046}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 791.87537, y: 418.16452, z: 116.566734}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  sword: {fileID: 8300000, guid: ff7796d000fac70449e1a1e252c9badd, type: 3}
 --- !u!1 &705045710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,4 +1472,3 @@ SceneRoots:
   - {fileID: 1479462946}
   - {fileID: 211545251}
   - {fileID: 1556556625}
-  - {fileID: 257358048}

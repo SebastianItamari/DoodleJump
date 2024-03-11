@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jump: 27
   horizontalSpeed: 0
+  platformSound: {fileID: 8300000, guid: b072fdb8ad7a86045b97af92fddf0614, type: 3}
 --- !u!50 &5270439142309298692
 Rigidbody2D:
   serializedVersion: 4
