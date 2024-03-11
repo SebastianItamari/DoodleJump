@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     private Rigidbody2D bodyPLalyer;
     private BoxCollider2D colliderPlayer;
     private bool right = true;

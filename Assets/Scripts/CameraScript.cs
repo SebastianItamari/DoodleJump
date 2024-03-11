@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public List<Level> backgrounds;
-    public Transform transformPlatformManager;
-    public GameController gameController;
-    [SerializeField] StartPlayer startPlayer;
+    [SerializeField] private List<Level> levels;
+    [SerializeField] private GameController gameController;
+    [SerializeField] private StartPlayer startPlayer;
     private GameObject targetObject;
     private Transform targetTransform;
     private GameObject bg;
@@ -18,9 +17,10 @@ public class CameraScript : MonoBehaviour
 
     void Start()
     {
-        bg = (GameObject)Instantiate(backgrounds[index].background, new Vector2(0,0), Quaternion.identity);
-        gameController.varY = backgrounds[index].varY;
-        gameController.speedPlatforms = backgrounds[index].horizontalSpeeds;
+        bg = (GameObject)Instantiate(levels[index].background, new Vector2(0,0), Quaternion.identity);
+        gameController.varY = levels[index].varY;
+        gameController.speedPlatforms = levels[index].horizontalSpeeds;
+        gameController.recurrenceCoin = levels[index].recurrenceCoin;
         index++;
 
         targetObject = startPlayer.player;
@@ -36,11 +36,6 @@ public class CameraScript : MonoBehaviour
         {
             Debug.LogError("Unable to find the external object with the specified tag.");
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     private void LateUpdate()
@@ -64,11 +59,11 @@ public class CameraScript : MonoBehaviour
 
     private void CreateNewBackground()
     {
-        if (index < backgrounds.Count)
+        if (index < levels.Count)
         {
-            bg = Instantiate(backgrounds[index].background, new Vector2(0, targetTransform.position.y + 9.8f), Quaternion.identity);
-            gameController.varY = backgrounds[index].varY;
-            gameController.speedPlatforms = backgrounds[index].horizontalSpeeds;
+            bg = Instantiate(levels[index].background, new Vector2(0, targetTransform.position.y + 9.8f), Quaternion.identity);
+            gameController.varY = levels[index].varY;
+            gameController.speedPlatforms = levels[index].horizontalSpeeds;
 
             bgTransform = bg.GetComponent<Transform>();
             index++;

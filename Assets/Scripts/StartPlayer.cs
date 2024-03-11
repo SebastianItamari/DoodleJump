@@ -23,8 +23,4 @@ public class StartPlayer : MonoBehaviour
     {
         player.SetActive(true);
     }
-    void Update()
-    {
-        
-    }
 }

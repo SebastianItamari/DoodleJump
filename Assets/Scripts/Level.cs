@@ -8,4 +8,5 @@ public class Level : ScriptableObject
     public GameObject background;
     public float varY;
     public List<float> horizontalSpeeds;
+    public int recurrenceCoin;
 }

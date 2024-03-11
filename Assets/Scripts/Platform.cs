@@ -45,7 +45,6 @@ public class Platform : MonoBehaviour
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
-                // Verificar si el punto de contacto está en la parte inferior de la plataforma
                 if (IsContactPointBelow(collision.gameObject, contact.point))
                 {
                     Rigidbody2D playerRigidbody = collision.collider.GetComponent<Rigidbody2D>();
@@ -56,21 +55,18 @@ public class Platform : MonoBehaviour
                         velocity.y = jump;
                         playerRigidbody.velocity = velocity;
                     }
-                    break; // Salir del bucle si encontramos un punto de contacto inferior
+                    break;
                 }
             }
         }
     }
 
-    // Método para verificar si el punto de contacto está debajo del jugador
     private bool IsContactPointBelow(GameObject player, Vector2 contactPoint)
     {
         Collider2D playerCollider = player.GetComponent<Collider2D>();
         if (playerCollider != null)
         {
-            // Calcular el centro inferior del colisionador del jugador
             Vector2 bottomCenter = playerCollider.bounds.center - new Vector3(0, playerCollider.bounds.extents.y, 0);
-            // Verificar si el punto de contacto está por debajo del centro inferior del colisionador del jugador
             return contactPoint.y < bottomCenter.y;
         }
         return false;

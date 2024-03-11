@@ -634,7 +634,11 @@ MonoBehaviour:
   - {fileID: 4382386388171068605, guid: 41e9916864aeafc4db6f0e5331be5bde, type: 3}
   - {fileID: 3044406955653314238, guid: 81690696e10c412478283420d01abcd5, type: 3}
   - {fileID: 8309193080226662238, guid: 7b19a3972f886384692db9c9c500c50f, type: 3}
-  scoreText: {fileID: 1394481830}
+  coins:
+  - {fileID: 3964531694451840583, guid: 6e5366fc4244df24ea1fc36f3ace5b60, type: 3}
+  - {fileID: 6235966190293161563, guid: 60d892ca9691eb040b8125ebf0976210, type: 3}
+  - {fileID: 8365744037963553355, guid: 9ac0f9d9390424141a4d6c5bbeab4d74, type: 3}
+  score: {fileID: 1394481832}
   scoreMenu: {fileID: 1044618091}
   scorePanel: {fileID: 1044618095}
   die: {fileID: 8300000, guid: 8147aac8f901dbb4ba002f0526391b11, type: 3}
@@ -643,6 +647,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  recurrenceCoin: 0
 --- !u!61 &597521630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2216,6 +2221,7 @@ GameObject:
   - component: {fileID: 1394481829}
   - component: {fileID: 1394481831}
   - component: {fileID: 1394481830}
+  - component: {fileID: 1394481832}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -2339,6 +2345,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394481828}
   m_CullTransparentMesh: 1
+--- !u!114 &1394481832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394481828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616b00c393109824781c48f28f353945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  score: 0
+  additionalScore: 0
 --- !u!1 &1472134792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a1563099c242d4d9d93702d3dd761a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgrounds:
+  levels:
   - {fileID: 11400000, guid: 9f112c6f679fec8489b1d5e9dfb9c2b6, type: 2}
   - {fileID: 11400000, guid: 5d37af9896509b447a0ae753f100cf87, type: 2}
   - {fileID: 11400000, guid: ebbce2bcac5e421479265fa8149f90e9, type: 2}

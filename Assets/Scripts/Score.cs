@@ -6,16 +6,16 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private TextMeshProUGUI menuScoreText;
-    // Start is called before the first frame update
-    void Start()
+    public int score = 0;
+    public float additionalScore = 0f;
+
+    void Awake()
     {
-        menuScoreText = GetComponent<TextMeshProUGUI>();
+        scoreText = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        menuScoreText.text = scoreText.text;
+        scoreText.text = score.ToString();
     }
 }
