@@ -24,18 +24,9 @@ public class CameraScript : MonoBehaviour
         index++;
 
         targetObject = startPlayer.player;
+        targetTransform = targetObject.transform;
 
         bgTransform = bg.GetComponent<Transform>();
-
-        if (targetObject != null)
-        {
-            targetTransform = targetObject.transform;
-            Debug.Log(targetTransform.localPosition);
-        }
-        else
-        {
-            Debug.LogError("Unable to find the external object with the specified tag.");
-        }
     }
 
     private void LateUpdate()

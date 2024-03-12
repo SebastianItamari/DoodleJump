@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public int recurrenceCoin;
     private GameObject plat;
     private GameObject coin;
+    private GameObject player;
     private float lastY = 6.14f;
     private float scoreAux = 0f;
     private float leftLimit = -7.11f;
@@ -25,16 +26,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            scoreAux += 5f;
-
-            score.additionalScore += 5f;
-
-            UpdateScoreText();
-        }
-
+        //Actualizar score si el y de game controller es mayor al socore
         if (transform.position.y > scoreAux - score.additionalScore)
         {
             scoreAux = transform.position.y;
@@ -86,7 +78,7 @@ public class GameController : MonoBehaviour
         else if(collision.gameObject.tag.Equals("Player"))
         {
             AudioController.instance.Reproduce(die);
-            GameObject player = collision.gameObject;
+            player = collision.gameObject;
             Animator anim = player.GetComponent<Animator>();
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             PlayerMovement playerInputComponent = player.GetComponent<PlayerMovement>();
@@ -108,6 +100,6 @@ public class GameController : MonoBehaviour
         scoreMenu.SetActive(true);
         LeanTween.alphaCanvas(scorePanel, 1f, 0.8f)
                  .setEase(LeanTweenType.easeInQuad);
-        plat.SetActive(false);
+        player.SetActive(false);
     }
 }
